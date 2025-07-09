@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    path: /
+    dockerfilePath: ./Dockerfile
+    ports:
+      - httpPort: 5678
+        port: 5678
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "false"
+      - key: N8N_HOST
+        value: "${RENDER_SERVICE_NAME}.onrender.com"
+      - key: N8N_PORT
+        value: "5678"
+      - key: N8N_PROTOCOL
+        value: "https"
+      - key: EXECUTIONS_MODE
+        value: "queue"
+      - key: DB_TYPE
+        value: "sqlite"
